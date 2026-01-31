@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+:root {
+  --primary-color: #19191a;
+  --secondary-color: #a6a6a6;
+  --selected-color: red;
+  --semi-transparent: rgba(86, 86, 87, 0.3);
+  --main-font: 'Playpen Sans', cursive;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.highlighted {
+  width: 50vw;
+  min-width: 300px;
+  max-width: 100%;
+
+  display: block;
+  background-color: gold;
+  position: relative;
+
+  padding: 0.6rem 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  clip-path: polygon(0 50%, 5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%);
+}
+
+.highlighted::before {
+  content: '';
+  position: absolute;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: shimmer 6s infinite;
+}
+
+.main-color {
+  color: var(--primary-color) !important;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.title-font {
+  font-family: var(--main-font);
+  font-size: 2.5rem;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: bold;
+
+  color: white;
+  margin: 0;
+}
+.bg {
+  --grid-color: #eded1a;
+  --grid-size: 100px;
+  --grid-line: 1px;
+
+  background-color: var(--primary-color);
+
+  background-image:
+    linear-gradient(to right, var(--grid-color) var(--grid-line), transparent var(--grid-line)),
+    linear-gradient(to bottom, var(--grid-color) var(--grid-line), transparent var(--grid-line));
+
+  background-size:
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size);
+
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      0 var(--grid-size),
+      0 var(--grid-size);
+  }
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter: blur(4px);
+  z-index: 0;
+}
+
+.gen-img {
+  height: auto;
+  max-width: 500px;
+
+  max-height: 100%;
+  max-height: 600px;
+}
+
+.text {
+  font-family: var(--main-font);
+  font-size: 1rem;
+  font-optical-sizing: auto;
+
+  font-weight: 300;
+  font-style: normal;
+  color: white;
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+}
+.sm-text {
+  font-family: var(--main-font);
+  font-size: 0.7rem;
+  font-optical-sizing: auto;
+
+  font-weight: 200;
+  font-style: normal;
+  color: white;
+}
+.animation-hover {
+  transition: transform 0.1s cubic-bezier(0.25, 1.5, 0.5, 1);
+}
+.animation-hover:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+
+  animation: shake 2s infinite;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+
+  object-fit: contain;
+}
+.sm-icon {
+  width: 16px;
+  height: 16px;
+
+  max-width: 5vw;
+  max-height: 20px;
+
+  object-fit: contain;
+}
+.invert {
+  filter: invert(1);
+}
+
+.s-padding {
+  padding: 1rem;
+}
+.b-padding {
+  padding: 4rem;
+}
+.start-aligner {
+  justify-content: start;
+  align-items: start;
+  text-align: start;
+}
+
+.selected {
+  transform: scale(1.1);
+  color: var(--selected-color);
+}
+.invisible {
+  display: none;
+}
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.s-separator {
+  gap: 1rem;
+}
+
+.m-separator {
+  gap: 4rem;
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-slot-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+.use-all-width {
+  width: 100%;
+}
+
+.mid-aligner {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  background-color: var(--secondary-color);
+  width: 100%;
+
+  height: 2rem;
+  outline: 2px solid var(--semi-transparent);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--selected-color);
+}
+
+@keyframes shake {
+  10% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  20% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  30% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  10% {
+    transform: none;
+  }
+}

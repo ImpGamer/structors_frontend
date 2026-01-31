@@ -1,0 +1,1 @@
+export const logo = '/images/static/studio_logo.webp';
