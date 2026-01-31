@@ -14,11 +14,12 @@ export async function apiFetch(endpoint, options = {}, query_params = {}) {
 
     try {
         const complete_URL = new URL(Url_constructor)
+        console.log(`Endpoint called: ${complete_URL}`);
 
         const res = await fetch(complete_URL, {
             ...options,
             headers: {
-                'Content-type': 'application/json',
+                ...(options.body && { 'Content-Type': 'application/json' }),
             },
         })
 
@@ -31,7 +32,7 @@ export async function apiFetch(endpoint, options = {}, query_params = {}) {
             )
         }
 
-        return res.json()
+        return await res.json();
     } catch (e) {
         console.error("No connection to the server ", e.message);
         throw new Error("No connection to the server.");
@@ -39,12 +40,13 @@ export async function apiFetch(endpoint, options = {}, query_params = {}) {
 }
 
 function clearParams(params) {
-    const entries = new Map()
-    for (const [key, value] of Object.entries(params)) {
-        if (value !== undefined && value !== null && value !== '') {
-            entries.set(key, value)
-        }
-    }
-
-    return Object.fromEntries(entries)
+    return Object.fromEntries(
+        Object.entries(params)
+            .filter(([, v]) => v !== undefined && v !== null && v !== '')
+            .map(([k, v]) => [
+                k,
+                typeof v === 'object' ? JSON.stringify(v) : v
+            ])
+    )
 }
+

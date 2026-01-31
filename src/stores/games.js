@@ -5,22 +5,22 @@ const resources = {
     games: {
         key: "games",
         timeOnCache: 150, //In Seconds
-        fetcher: () => getGames({ limit: 10, offset: 0 }, {}),
+        fetcher: async () => await getGames({ limit: 10, offset: 0 }),
     },
     ftGame: {
         key: "ftGame",
         timeOnCache: 500,
-        fetcher: () => getFeaturedGame(),
+        fetcher: async () => await getFeaturedGame(),
     },
     ltGame: {
         key: "ltGame",
         timeOnCache: 500,
-        fetcher: () => getLatestGame(),
+        fetcher: async () => await getLatestGame(),
     },
     onDiscount: {
         key: "onDiscount",
         timeOnCache: 150,
-        fetcher: () => getGamesOnDiscount(),
+        fetcher: async () => await getGamesOnDiscount(),
     }
 }
 
@@ -56,17 +56,21 @@ export const usegamesStore = defineStore("games", {
             }
 
             storeSource.setLoadState();
-            try {
-                const cached = storeSource.getCache();
-                storeSource.finishLoading(cached, null);
-                storeSource.timerCache();
+            const rawCache = sessionStorage.getItem(storeSource.key);
 
-                console.log(`Cache used for ${source}`);
-                return;
-            } catch {
-                sessionStorage.removeItem(storeSource.key);
+            if (!IsEmpty(rawCache)) {
+                try {
+                    const cache = JSON.parse(rawCache);
+                    storeSource.finishLoading(cache, null);
+                    storeSource.timerCache();
 
-                console.log(`Cache Empty or bad struct ${storeSource.key}, Using API.`);
+                    console.log(`Cache used for ${source}`);
+                    return;
+                } catch {
+                    sessionStorage.removeItem(storeSource.key);
+
+                    console.log(`Cache Empty or bad struct ${storeSource.key}, Using API.`);
+                }
             }
 
             const result = await fetchSource.fetcher();
@@ -132,10 +136,5 @@ class ResourceState {
         this.isLoading = true;
         this.data = null;
         this.error = null;
-    }
-
-    getCache() {
-        const cache = sessionStorage.getItem(this.key);
-        return JSON.parse(cache);
     }
 }

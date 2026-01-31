@@ -13,16 +13,12 @@ export async function getGames(pagination, filters) {
         throw new Error('You cannot make a request without pagination')
     }
 
-    const params = {
-        limit: pagination.limit,
-        offset: pagination.offset,
-        state: filters.state,
-        tags: filters.tags,
-        platform: filters.platform,
-    }
-
     return fetchWithState(async () => {
-        const res = await apiFetch(suffix_point, { method: 'GET' }, params)
+        const res = await apiFetch(suffix_point, { method: 'GET' }, {
+            limit: pagination.limit ?? 10,
+            offset: pagination.offset ?? 0,
+            filters: filters,
+        })
         return res.data
     })
 }
