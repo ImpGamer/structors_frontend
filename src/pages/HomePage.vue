@@ -7,7 +7,7 @@
         <div class="page-content vertical-container mid-alignerr">
             <div class="vertical-container m-separator mid-aligner">
                 <h1 class="highlighted title-font main-color">
-                    ImpStructors Studio
+                    Nullity Studio
                     <br />
                     <p class="text">Indie Game Studio</p>
                 </h1>

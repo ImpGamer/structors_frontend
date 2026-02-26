@@ -8,28 +8,22 @@ export const navLinks = [
 export const socialMedias = {
     twitter: {
         label: 'Twitter',
-        to: 'https://x.com/StructorsStudio',
+        to: 'https://x.com/nullitystudio?s=11',
         img: '/images/icons/twitter_icon.svg',
         color: 'black',
     },
-    youtube: {
-        label: 'Youtube',
-        to: 'https://www.youtube.com/@TheFoundationSurvive',
-        img: '/images/icons/youtube_icon.svg',
+    instagram: {
+        label: 'Instagram',
+        to: 'https://www.instagram.com/nullitystudio?igsh=eW82d2ZiOWp4NXRs&utm_source=qr',
+        img: '/images/icons/instagram_icon.svg',
         color: 'red',
     },
     tiktok: {
         label: 'TikTok',
-        to: 'https://www.tiktok.com/@the.foundation.su',
+        to: 'https://www.tiktok.com/@nullity.studio?_r=1&_t=ZS-94DmqU2te7M',
         img: '/images/icons/tik_tok_icon.png',
         color: 'black',
-    },
-    discord: {
-        label: 'Discord',
-        to: 'https://t.co/pWaLfMpZCT',
-        img: '/images/icons/discord_icon.svg',
-        color: '#206de8',
-    },
+    }
 }
 
 export const platforms = {

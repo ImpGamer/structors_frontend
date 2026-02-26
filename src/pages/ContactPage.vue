@@ -32,7 +32,7 @@
 
             <div class="card-slot-container mid-aligner">
                 <p class="text">Or, you can also contact us by email.</p>
-                <ButtonComponent content="Email" href="mailto:impstructorstudio@gmail.com" color="blue"
+                <ButtonComponent content="Email" href="mailto:nullitystudio1@gmail.com" color="blue"
                     icon="/images/icons/email_icon.svg" />
             </div>
         </div>

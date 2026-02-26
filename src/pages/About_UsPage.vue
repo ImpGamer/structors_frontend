@@ -3,9 +3,9 @@
         <div class="b-padding vertical-container">
             <section :class="!isMobile ? 'horizontal-container' : 'vertical-container'">
                 <div class="text-container">
-                    <h3 class="title-font">¿What is ImpStructors Studio?</h3>
+                    <h3 class="title-font">¿What is Nullity Studio?</h3>
                     <p class="text">
-                        We are an independent game development studio founded in Mexico in 2024 by David Romero.
+                        We are an independent game development studio founded in Mexico in 2026 by David Romero.
                         Our work is driven by a passion for horror, adventure, and psychological terror,
                         focusing on creating immersive experiences, memorable stories, and impactful moments
                         that stay with players long after they finish playing. While our core focus lies in dark
@@ -18,28 +18,11 @@
                 <img class="gen-img" src="https://res.cloudinary.com/dtohisibj/image/upload/ths_1_sticker_nyph4w.png"
                     alt="about-us" />
             </section>
-
-            <section class="inverse-container">
-                <div class="text-container">
-                    <h3 class="title-font">Community</h3>
-                    <p class="text">
-                        Every day we strive to build a community passionate about our content, including video
-                        games, development, technology, and any other interesting topic! Join us to chat with
-                        more people! Plus news, feedback, and exclusive content!
-                    </p>
-                    <ButtonComponent :color="socialMedias.discord.color" :content="socialMedias.discord.label"
-                        :icon="socialMedias.discord.img" :href="socialMedias.discord.to" />
-                </div>
-                <img class="gen-img invert" src="/images/static/community.png" alt="community" />
-            </section>
         </div>
     </div>
 </template>
 
 <script setup>
-import { socialMedias } from '@config/lists.config'
-import ButtonComponent from '@components/ButtonComponent.vue'
-
 defineProps({
     isMobile: {
         Type: Boolean,

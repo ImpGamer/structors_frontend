@@ -18,30 +18,30 @@ const router = createRouter({
           path: 'home',
           name: 'home',
           component: HomePage,
-          meta: { title: 'ImpStructors Web | Home' }
+          meta: { title: 'Nullity Studio Web | Home' }
         },
         {
           path: 'games',
           name: 'games',
           component: GamesPage,
-          meta: { title: 'ImpStructors Web | Our Games' }
+          meta: { title: 'Nullity Studio Web | Our Games' }
         },
         {
           path: 'about-us',
           name: 'about-us',
-          meta: { title: 'ImpStructors Web | About Us' },
+          meta: { title: 'Nullity Studio Web | About Us' },
           component: About_UsPage
         },
         {
           path: 'contact',
           name: 'contact',
           component: ContactPage,
-          meta: { title: 'ImpStructors Web | Contact Us' },
+          meta: { title: 'Nullity Studio Web | Contact Us' },
         },
         {
           path: '/:pathMatch(.*)*',
           name: 'NotFound',
-          meta: { title: 'ImpStructors Web | Not Found' },
+          meta: { title: 'Nullity Studio Web | Not Found' },
           component: NotFoundPage,
         }
       ]

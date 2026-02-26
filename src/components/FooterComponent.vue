@@ -8,7 +8,7 @@
                     </router-link>
                 </div>
 
-                <p class="sm-text">®2026 ImpStructors Studio. All rights reserved</p>
+                <p class="sm-text">®2026 Nullity Studio. All rights reserved</p>
             </div>
             <div class="medias-container">
                 <div v-for="media in socialMedias" :key="media" class="s-padding animation-hover">
